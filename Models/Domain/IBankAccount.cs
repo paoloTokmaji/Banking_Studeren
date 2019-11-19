@@ -11,6 +11,6 @@ namespace Banking_Studeren.Models.Domain
 
         void Deposit(decimal amount);
         IEnumerable<Transaction> GetTransactions(DateTime? from, DateTime? till);
-        void WithDraw(decimal amount);
+        void Withdraw(decimal amount);
     }
 }

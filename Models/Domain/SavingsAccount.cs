@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Transactions;
 
 namespace Banking_Studeren.Models.Domain
 {
@@ -21,11 +18,20 @@ namespace Banking_Studeren.Models.Domain
             Deposit(Balance * InterestRate);
         }
 
-        public override void WithDraw(decimal amount)
+        public override void Withdraw(decimal amount)
         {
-            base.WithDraw(amount);
-            base.WithDraw(WithdrawCost);
-            
+
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Amount must be a positive number bigger than zero");
+            }
+            if((base.Balance - amount) <= 0)
+            {
+                throw new InvalidOperationException("You can't go below zero on your savingsaccount, chose a smaller amount to withdraw!");
+            }
+            base.Withdraw(amount);
+            base.Withdraw(WithdrawCost);
+
         }
     }
 }

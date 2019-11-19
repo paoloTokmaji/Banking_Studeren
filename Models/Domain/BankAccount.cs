@@ -63,7 +63,7 @@ namespace Banking_Studeren.Models.Domain
             Balance += amount;
         }
 
-        public virtual void WithDraw(decimal amount)
+        public virtual void Withdraw(decimal amount)
         {
             _transactions.Add(new Transaction(amount, TransactionType.Withdraw));
             if (amount <= 0)
